@@ -1,0 +1,102 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://cinematics/cinematica.gd" type="Script" id=1]
+[ext_resource path="res://cinematics/hospital/frame_1_delay-0.15s.png" type="Texture" id=2]
+[ext_resource path="res://cinematics/hospital/frame_2_delay-0.15s.png" type="Texture" id=3]
+[ext_resource path="res://cinematics/hospital/frame_5_delay-0.15s.png" type="Texture" id=4]
+[ext_resource path="res://cinematics/hospital/frame_7_delay-2.5s.png" type="Texture" id=5]
+[ext_resource path="res://cinematics/hospital/frame_4_delay-0.15s.png" type="Texture" id=6]
+[ext_resource path="res://cinematics/hospital/frame_3_delay-1.5s.png" type="Texture" id=7]
+[ext_resource path="res://cinematics/hospital/frame_6_delay-0.15s.png" type="Texture" id=8]
+[ext_resource path="res://cinematics/hospital/hospital.jpg" type="Texture" id=9]
+[ext_resource path="res://cinematics/hospital/frame_0_delay-0.15s.png" type="Texture" id=10]
+[ext_resource path="res://tas/Tas.tscn" type="PackedScene" id=11]
+[ext_resource path="res://fonts/arvige.tres" type="DynamicFont" id=12]
+[ext_resource path="res://dialogo/dialogo.png" type="Texture" id=13]
+[ext_resource path="res://buttons/Continuar.tscn" type="PackedScene" id=20]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 782.347, 532.232 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 1 )
+frame = 9
+playing = true
+flip_h = true
+
+[node name="tas" parent="." instance=ExtResource( 11 )]
+position = Vector2( -258.741, 596.257 )
+scale = Vector2( 0.089, 0.07 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_left = -323.952
+margin_top = -132.485
+margin_right = 3548.04
+margin_bottom = 2459.51
+texture = ExtResource( 9 )
+flip_h = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+visible = true
+margin_left = 853.641
+margin_top = 148.438
+margin_right = 960.641
+margin_bottom = 188.438
+window_title = "Bombero"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WindowDialog"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Continuar" parent="." instance=ExtResource( 20 )]
+visible = false
+margin_left = 956.507
+margin_top = 619.985
+margin_right = 1041.26
+margin_bottom = 659.985
+rect_scale = Vector2( 2.5, 2.5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 578.176, 186.526 )
+scale = Vector2( 0.521008, 0.467209 )
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite"]
+margin_left = -342.372
+margin_top = -288.814
+margin_right = -81.3722
+margin_bottom = -161.814
+rect_scale = Vector2( 2.5, 3.2 )
+custom_fonts/normal_font = ExtResource( 12 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Gracias por venir, Tas!
+Estamos preocupados, en el hospital necesitamos alcohol en gel para seguir higienizandonos.
+Con tu ayuda, lo vamos a lograr!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Continuar" to="." method="_on_Continuar_pressed"]

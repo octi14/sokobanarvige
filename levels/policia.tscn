@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://levels/policia.gd" type="Script" id=1]
+[ext_resource path="res://Game.gd" type="Script" id=2]
+[ext_resource path="res://backgrounds/598924173f909ca6e650cf306fca63fa.jpg" type="Texture" id=3]
+[ext_resource path="res://chest/Chest.tscn" type="PackedScene" id=4]
+[ext_resource path="res://coin/coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tas/Tas.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Panel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://tileset.tres" type="TileSet" id=8]
+
+[sub_resource type="Theme" id=1]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -3, 13, 0, -2, 6, 0, -1, 6, 0, -65536, 6, 0, -65535, 6, 0, -65534, 6, 0, -65533, 6, 0, -65532, 6, 0, -65531, 6, 0, -65530, 6, 0, -65529, 6, 0, -65528, 6, 0, -65527, 13, 0, 65533, 6, 0, 65535, 6, 0, 5, 13, 0, 9, 6, 0, 131069, 6, 0, 131071, 6, 0, 65545, 6, 0, 196605, 6, 0, 131081, 6, 0, 262141, 6, 0, 196610, 6, 0, 196611, 6, 0, 196616, 13, 0, 196617, 6, 0, 327677, 6, 0, 262153, 6, 0, 393213, 6, 0, 327680, 6, 0, 327689, 6, 0, 458749, 13, 0, 458750, 6, 0, 458751, 6, 0, 393216, 6, 0, 393217, 6, 0, 393218, 6, 0, 393219, 6, 0, 393220, 6, 0, 393221, 6, 0, 393222, 6, 0, 393223, 6, 0, 393224, 6, 0, 393225, 13, 0 )
+script = ExtResource( 1 )
+
+[node name="coin" parent="TileMap" instance=ExtResource( 5 )]
+position = Vector2( 384, 256 )
+
+[node name="coin2" parent="TileMap" instance=ExtResource( 5 )]
+position = Vector2( 512, 505.951 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 496.354, 388.504 )
+offset = Vector2( -50, 0 )
+current = true
+zoom = Vector2( 1.3, 1.5 )
+
+[node name="Tas" parent="." instance=ExtResource( 6 )]
+position = Vector2( -64.4068, 643.704 )
+
+[node name="Chest2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 896, 256 )
+
+[node name="Chest" parent="." instance=ExtResource( 4 )]
+position = Vector2( 128, 512 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+margin_left = -347.201
+margin_top = -38.8082
+margin_right = 1572.8
+margin_bottom = 772.192
+theme = SubResource( 1 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" parent="." instance=ExtResource( 7 )]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -286.151
+margin_top = -100.787
+margin_right = 1183.84
+margin_bottom = 867.213
+[connection signal="body_entered" from="Chest2" to="." method="_on_Chest2_body_entered"]
+[connection signal="body_exited" from="Chest2" to="." method="_on_Chest_body_exited"]
+[connection signal="body_entered" from="Chest" to="." method="_on_Chest_body_entered"]
+[connection signal="body_exited" from="Chest" to="." method="_on_Chest_body_exited"]

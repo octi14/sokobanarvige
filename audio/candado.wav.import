@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/candado.wav-6fd498a5fd0489e41f44fa246db6b05e.sample"
+
+[deps]
+
+source_file="res://audio/candado.wav"
+dest_files=[ "res://.import/candado.wav-6fd498a5fd0489e41f44fa246db6b05e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

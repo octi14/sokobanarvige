@@ -1,0 +1,84 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://cinematics/cinematica.gd" type="Script" id=1]
+[ext_resource path="res://cinematics/playa/frame_6_delay-0.15s.png" type="Texture" id=2]
+[ext_resource path="res://cinematics/playa/frame_7_delay-1.5s.png" type="Texture" id=3]
+[ext_resource path="res://cinematics/playa/frame_0_delay-0.15s.png" type="Texture" id=4]
+[ext_resource path="res://cinematics/playa/frame_4_delay-0.15s.png" type="Texture" id=5]
+[ext_resource path="res://cinematics/playa/frame_5_delay-1s.png" type="Texture" id=6]
+[ext_resource path="res://cinematics/playa/frame_1_delay-1s.png" type="Texture" id=7]
+[ext_resource path="res://cinematics/playa/frame_2_delay-0.15s.png" type="Texture" id=8]
+[ext_resource path="res://cinematics/playa/frame_3_delay-0.15s.png" type="Texture" id=9]
+[ext_resource path="res://dialogo/dialogo.png" type="Texture" id=10]
+[ext_resource path="res://tas/Tas.tscn" type="PackedScene" id=11]
+[ext_resource path="res://cinematics/playa/playa.jpg" type="Texture" id=12]
+[ext_resource path="res://fonts/arvige.tres" type="DynamicFont" id=13]
+[ext_resource path="res://buttons/Continuar.tscn" type="PackedScene" id=20]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
+position = Vector2( 1141.1, 490.96 )
+scale = Vector2( 1.3, 1.3 )
+frames = SubResource( 1 )
+frame = 17
+playing = true
+flip_h = true
+
+[node name="tas" parent="." instance=ExtResource( 11 )]
+modulate = Color( 0.541176, 0.541176, 0.541176, 1 )
+position = Vector2( -261.916, 526.411 )
+scale = Vector2( 0.089, 0.07 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+modulate = Color( 0.862745, 0.862745, 0.862745, 1 )
+margin_left = -276.33
+margin_top = -142.009
+margin_right = 3595.67
+margin_bottom = 2449.98
+rect_scale = Vector2( 0.9, 0.85 )
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Continuar" parent="." instance=ExtResource( 20 )]
+visible = false
+margin_left = 743.795
+margin_top = 610.461
+margin_right = 828.545
+margin_bottom = 650.461
+rect_scale = Vector2( 2.5, 2.5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 879.85, 212.72 )
+scale = Vector2( 0.515652, 0.440097 )
+texture = ExtResource( 10 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite"]
+margin_left = -341.766
+margin_top = -291.165
+margin_right = -114.766
+margin_bottom = -151.165
+rect_scale = Vector2( 3, 3 )
+custom_fonts/normal_font = ExtResource( 13 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Buen día Tas!
+¡No lo vas a creer! Nos queda sólo un salvavidas y necesitamos comprar más. Pero para eso necesitamos más monedas! Nos ayudás?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Continuar" to="." method="_on_Continuar_pressed"]

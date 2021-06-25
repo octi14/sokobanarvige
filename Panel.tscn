@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/arvige.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Panel.gd" type="Script" id=2]
+[ext_resource path="res://buttons/Continuar.tscn" type="PackedScene" id=3]
+
+[node name="Panel" type="Panel"]
+light_mask = -2147483647
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -683.0
+margin_top = -384.0
+margin_right = 581.0
+margin_bottom = 502.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.501
+anchor_top = 0.5
+anchor_right = 0.501
+anchor_bottom = 0.5
+margin_left = -202.869
+margin_top = -219.528
+margin_right = -121.869
+margin_bottom = -195.528
+rect_scale = Vector2( 5, 5 )
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0.505882, 0.733333, 0.27451, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+meta_underlined = false
+tab_size = 3
+text = "Muy bien!"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -197.699
+margin_top = -27.0636
+margin_right = 1.30023
+margin_bottom = 19.9364
+rect_scale = Vector2( 2, 2 )
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0.505882, 0.733333, 0.27451, 1 )
+custom_colors/selection_color = Color( 0.270588, 0.160784, 0.160784, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+meta_underlined = false
+tab_size = 0
+text = "Ayuda a Tas a seguir encontrando  monedas!"
+scroll_active = false
+
+[node name="Menu" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -368.183
+margin_top = 253.0
+margin_right = -317.574
+margin_bottom = 293.0
+rect_scale = Vector2( 3, 3 )
+custom_fonts/font = ExtResource( 1 )
+text = "Volver"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continuar" parent="." instance=ExtResource( 3 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 187.798
+margin_top = 253.0
+margin_right = 272.548
+margin_bottom = 293.0
+[connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="Continuar" to="." method="_on_Continuar_pressed"]

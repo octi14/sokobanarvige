@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://levels/playa.gd" type="Script" id=1]
+[ext_resource path="res://Game.gd" type="Script" id=2]
+[ext_resource path="res://backgrounds/Villa-Gesell-Playas-de-Villa-Gessell-2.jpg" type="Texture" id=3]
+[ext_resource path="res://tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://tas/Tas.tscn" type="PackedScene" id=5]
+[ext_resource path="res://coin/coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://chest/Chest.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Panel.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Theme" id=1]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -3, 1, 0, -2, 9, 0, -1, 9, 0, -65536, 9, 0, -65535, 9, 0, -65534, 9, 0, -65533, 9, 0, -65532, 9, 0, -65531, 9, 0, -65530, 9, 0, -65529, 9, 0, -65528, 9, 0, -65527, 9, 0, -65526, 9, 0, -65525, 1, 0, 65533, 9, 0, 7, 9, 0, 11, 9, 0, 131069, 9, 0, 65547, 9, 0, 196605, 9, 0, 196606, 9, 0, 131072, 9, 0, 131081, 9, 0, 131083, 9, 0, 262141, 9, 0, 196608, 9, 0, 196609, 9, 0, 196610, 9, 0, 196619, 9, 0, 327677, 9, 0, 262151, 9, 0, 262152, 9, 0, 262155, 9, 0, 393213, 9, 0, 327685, 9, 0, 327691, 9, 0, 458749, 1, 0, 458750, 9, 0, 458751, 9, 0, 393216, 9, 0, 393217, 9, 0, 393218, 9, 0, 393219, 9, 0, 393220, 9, 0, 393221, 9, 0, 393222, 9, 0, 393223, 9, 0, 393224, 9, 0, 393225, 9, 0, 393226, 9, 0, 393227, 1, 0 )
+script = ExtResource( 1 )
+
+[node name="coin" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 896, 256 )
+
+[node name="coin4" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( -128, 128 )
+
+[node name="coin2" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 1152, 128 )
+
+[node name="coin3" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 512, 512 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 587.394, 410.388 )
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="Tas" parent="." instance=ExtResource( 5 )]
+position = Vector2( -64.4068, 643.704 )
+
+[node name="Chest2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 512, 0 )
+
+[node name="Chest3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 640, 256 )
+
+[node name="Chest4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 512, 640 )
+
+[node name="Chest" parent="." instance=ExtResource( 7 )]
+position = Vector2( 128, 512 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+use_parent_material = true
+margin_left = -261.15
+margin_top = -41.0531
+margin_right = 1658.85
+margin_bottom = 1065.95
+rect_scale = Vector2( 1.2, 1 )
+theme = SubResource( 1 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" parent="." instance=ExtResource( 8 )]
+visible = false
+margin_left = -165.042
+margin_top = -93.2652
+margin_right = 1304.96
+margin_bottom = 874.735
+[connection signal="body_entered" from="Chest2" to="." method="_on_Chest2_body_entered"]
+[connection signal="body_exited" from="Chest2" to="." method="_on_Chest_body_exited"]
+[connection signal="body_entered" from="Chest3" to="." method="_on_Chest2_body_entered"]
+[connection signal="body_exited" from="Chest3" to="." method="_on_Chest_body_exited"]
+[connection signal="body_entered" from="Chest4" to="." method="_on_Chest2_body_entered"]
+[connection signal="body_entered" from="Chest" to="." method="_on_Chest_body_entered"]
+[connection signal="body_exited" from="Chest" to="." method="_on_Chest_body_exited"]
